@@ -5,6 +5,7 @@ import com.r3.DataProviders.USDRatesDP;
 import com.r3.Models.USDRateResponse;
 import com.r3.Utils.APIUtil;
 import com.r3.Utils.SystemArgs;
+import com.r3.Validators.USDRateValidator;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
@@ -16,6 +17,7 @@ import java.io.IOException;
 public class USDRatesTest {
 
     Gson gson = new Gson();
+    USDRateValidator validator = new USDRateValidator();
     @Test(dataProvider = "ratesTest", dataProviderClass = USDRatesDP.class)
     public void usdRatesTest(String testCase){
         //This statement can be replaced for LOG.Info
@@ -28,6 +30,7 @@ public class USDRatesTest {
             String res = EntityUtils.toString(entity);
             System.out.println(res);//replace with log
             USDRateResponse response = gson.fromJson(res,USDRateResponse.class);
+            validator.rateValidator1(response);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -1,14 +1,9 @@
 package com.r3.Models;
 
-
 import com.r3.Enums.Result;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.math.BigDecimal;
-import java.sql.Timestamp;
-import java.util.List;
 import java.util.Map;
 
 @Builder
